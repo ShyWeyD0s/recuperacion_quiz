@@ -8,4 +8,27 @@ use Illuminate\Database\Eloquent\Model;
 class Habitacion extends Model
 {
     use HasFactory;
+
+    protected $table = 'habitaciones';
+
+    protected $fillable = ['tipo', 'hotel_id'];
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function agencias()
+    {
+        return $this->belongsToMany(Agencia::class, 'reserva_agencia')
+            ->withPivot('fecha_ini', 'fecha_fin')
+            ->withTimestamps();
+    }
+
+    public function particulares()
+    {
+        return $this->belongsToMany(Particular::class, 'reserva_particular')
+            ->withPivot('fecha_ini', 'fecha_fin')
+            ->withTimestamps();
+    }
 }
