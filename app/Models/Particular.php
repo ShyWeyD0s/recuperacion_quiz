@@ -15,8 +15,6 @@ class Particular extends Model
 
     public function habitaciones()
     {
-        return $this->belongsToMany(Habitacion::class, 'reserva_particular')
-            ->withPivot('fecha_ini', 'fecha_fin')
-            ->withTimestamps();
+        return $this->belongsToMany(Habitacion::class, 'reserva_particular');
     }
 }
