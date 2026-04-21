@@ -20,15 +20,11 @@ class Habitacion extends Model
 
     public function agencias()
     {
-        return $this->belongsToMany(Agencia::class, 'reserva_agencia')
-            ->withPivot('fecha_ini', 'fecha_fin')
-            ->withTimestamps();
+        return $this->belongsToMany(Agencia::class, 'reserva_agencia');
     }
 
     public function particulares()
     {
-        return $this->belongsToMany(Particular::class, 'reserva_particular')
-            ->withPivot('fecha_ini', 'fecha_fin')
-            ->withTimestamps();
+        return $this->belongsToMany(Particular::class, 'reserva_particular');
     }
 }
